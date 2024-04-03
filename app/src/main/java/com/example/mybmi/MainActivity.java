@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -16,11 +20,67 @@ public class MainActivity extends AppCompatActivity {
     private EditText weight;
     private TextView show;
 
+    private RadioGroup rgsex;
+
+
+    private RadioButton rbMale;
+
+    private RadioButton rbFeMale;
+    
+    private CheckBox cbA;
+    private CheckBox cbB;
+    private  CheckBox cbO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+        rgsex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.rb1){
+                    show.setText("我是男生");
+                }
+                else if(checkedId == R.id.rb2){
+                    show.setText("我是女生");
+                }
+            }
+        });
+        
+        cbA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getFruits();
+            }
+        });
+        cbB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getFruits();
+            }
+        });
+        cbO.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getFruits();
+            }
+        });
+    }
+
+    private void getFruits() {
+        String msg = "";
+        if(cbA.isChecked()){
+            msg+="蘋狗";
+        }
+        if(cbB.isChecked()){
+            msg+="香蕉";
+        }
+        if(cbO.isChecked()){
+            msg+="橘子";
+        }
+        show.setText("我喜歡吃"+msg);
     }
 
     public void calcBMI(View view) {
@@ -46,6 +106,13 @@ public class MainActivity extends AppCompatActivity {
         height = findViewById(R.id.etHeight);
         weight = findViewById(R.id.edWeight);
         show = findViewById(R.id.tvShow);
+        rgsex = findViewById(R.id.rgsex);
+        rbMale = findViewById(R.id.rb1);
+        rbFeMale = findViewById(R.id.rb2);
+        cbA = findViewById(R.id.cbA);
+        cbB = findViewById(R.id.cbB);
+        cbO = findViewById(R.id.cbO);
+
     }
 
     public void GoNext(View view) {

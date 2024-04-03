@@ -69,4 +69,57 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgsex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btGoNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btCalc">
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="女生" />
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="221dp"
+            android:layout_height="wrap_content"
+
+            android:text="男生" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cbA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="蘋果"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cbB" />
+
+    <CheckBox
+        android:id="@+id/cbB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="香蕉"
+        app:layout_constraintBottom_toTopOf="@+id/btGoNext"
+        app:layout_constraintEnd_toStartOf="@+id/cbO"
+        app:layout_constraintStart_toEndOf="@+id/cbA"
+        app:layout_constraintTop_toBottomOf="@+id/rgsex" />
+
+    <CheckBox
+        android:id="@+id/cbO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="橘子"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cbB" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
