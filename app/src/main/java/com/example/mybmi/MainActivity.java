@@ -17,6 +17,11 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity {
 
     private EditText height;
+
+
+
+
+
     private EditText weight;
     private TextView show;
 
