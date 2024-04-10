@@ -1,5 +1,6 @@
 package com.example.mybmi;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -88,13 +89,24 @@ public class MainActivity extends AppCompatActivity {
         show.setText("我喜歡吃"+msg);
     }
 
+    public void showDialog(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("BMI");
+        double bmi = getBmi();
+        String result = getString(R.string.strShowbmi)+bmi;
+        builder.setMessage(result);
+        builder.setPositiveButton("OK!",null);
+        builder.show();
+    }
+
     public void calcBMI(View view) {
 
         double bmi = getBmi();
 
-        String result = getString(R.string.strShowbmi) + bmi;
+        String result = "your BMI is " + bmi;
 
-       show.setText(result);
+
+        show.setText(result);
 
     }
 
