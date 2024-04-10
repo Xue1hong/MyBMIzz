@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbB;
     private  CheckBox cbO;
 
+    private String[] sex ={"boy","girl"};
+    private String[] fruits = {"A","B","O"};
+    private boolean[] fruitsSelected = {false,false,false};
+    private int sexSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
