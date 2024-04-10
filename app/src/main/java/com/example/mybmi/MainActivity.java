@@ -3,6 +3,7 @@ package com.example.mybmi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -95,9 +97,21 @@ public class MainActivity extends AppCompatActivity {
         double bmi = getBmi();
         String result = getString(R.string.strShowbmi)+bmi;
         builder.setMessage(result);
-        builder.setPositiveButton("OK!",null);
-        builder.show();
+        builder.setPositiveButton("OK!", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                Toast.makeText(MainActivity.this, "hi", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                Toast.makeText(MainActivity.this, "hi", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show()  ;
     }
+
 
     public void calcBMI(View view) {
 
