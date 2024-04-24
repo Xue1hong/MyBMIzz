@@ -28,11 +28,12 @@ public class ListActivity extends AppCompatActivity {
         list.add("西瓜");
         list.add("葡萄");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = findViewById(R.id.spinner);
         TextView tvshow = findViewById(R.id.tvshow);
         ListView lvFruit = findViewById(R.id.lvFruit);
+        lvFruit.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         spinner.setAdapter(adapter);
         lvFruit.setAdapter(adapter);
 
@@ -50,10 +51,17 @@ public class ListActivity extends AppCompatActivity {
         lvFruit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tvshow.setText(list.get(position));
-
+//                tvshow.setText(list.get(position));
+                String s = "";
+                for (int i = 0; i < list.size();i++){
+                    if (lvFruit.isItemChecked(i)){
+                        s += list.get(i) + " ";
+                    }
+                }
+                tvshow.setText(s);
             }
         });
+
     }
 
 }
