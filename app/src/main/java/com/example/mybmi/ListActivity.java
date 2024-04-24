@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,12 +24,17 @@ public class ListActivity extends AppCompatActivity {
         list.add("蘋果");
         list.add("香蕉");
         list.add("橘子");
+        list.add("芭樂");
+        list.add("西瓜");
+        list.add("葡萄");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = findViewById(R.id.spinner);
         TextView tvshow = findViewById(R.id.tvshow);
+        ListView lvFruit = findViewById(R.id.lvFruit);
         spinner.setAdapter(adapter);
+        lvFruit.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -41,8 +47,13 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
+        lvFruit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                tvshow.setText(list.get(position));
 
-
+            }
+        });
     }
 
 }
